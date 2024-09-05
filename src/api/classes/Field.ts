@@ -1,3 +1,4 @@
+import { id } from "../util/general";
 import { Block, BlockSerializedData } from "./Block";
 import { Definitions } from "./Definitions";
 
@@ -8,6 +9,8 @@ export abstract class Field {
         | string
         | boolean
         | Block = 0;
+
+    id: string = id();
 
     abstract onInit (value?: FieldSerializedData): Exclude<typeof this.value, Block>;
     abstract onSerialize (value: Exclude<typeof this.value, Block>): FieldSerializedData;

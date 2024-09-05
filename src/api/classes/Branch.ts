@@ -1,9 +1,11 @@
+import { id } from "../util/general";
 import { Block, BlockSerializedData } from "./Block";
 import { Definitions } from "./Definitions";
 
 export class Branch {
 
     children: Block[] = [];
+    id: string = id();
 
     constructor (children?: BlockSerializedData[]) {
         if (children)

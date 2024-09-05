@@ -4,9 +4,9 @@ import { Definitions } from "../../api/classes/Definitions";
 
 import { StringField } from "../fields/StringField";
 
-export class PrintBlock extends Block {
+export class AskBlock extends Block {
 
-    type = 'print';
+    type = 'ask';
 
     fields = {
         text: new StringField().init(),
@@ -15,13 +15,17 @@ export class PrintBlock extends Block {
     design = new BlockDesign({
         form: BlockDesignForm.STACK,
         returnType: 'void',
-        title: 'print',
+        title: 'ask',
         color: 0x5cb1d6,
         components: [
             {
                 type: 'field',
                 forField: 'text',
                 fieldType: 'string',
+            },
+            {
+                type: 'label',
+                label: 'and wait'
             },
         ],
     });
@@ -39,9 +43,9 @@ export class PrintBlock extends Block {
     }
 
     onCompile () {
-        return `console.log(${this.fields.text.compile()});`;
+        return `prompt(${this.fields.text.compile()});`;
     }
 
 }
 
-Definitions.registerBlock(PrintBlock);
+Definitions.registerBlock(AskBlock);

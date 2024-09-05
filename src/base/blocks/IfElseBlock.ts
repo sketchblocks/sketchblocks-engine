@@ -23,6 +23,7 @@ export class IfElseBlock extends Block {
         form: BlockDesignForm.BRANCH,
         returnType: 'void',
         title: 'if',
+        color: 0xffab19,
         components: [
             {
                 type: 'field',

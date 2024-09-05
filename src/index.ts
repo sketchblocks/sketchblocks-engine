@@ -1,49 +1,20 @@
 import { Branch } from './api/classes/Branch';
+import { Block } from './api/classes/Block';
+import { BlockDesign, BlockDesignForm } from './api/classes/BlockDesign';
+import { Definitions } from './api/classes/Definitions';
+import { Field } from './api/classes/Field';
 
 import './base/blocks/IfElseBlock';
 import './base/blocks/PrintBlock';
+import './base/blocks/AskBlock';
 import './base/blocks/LogicalAndBlock';
 import './base/blocks/FinishBlock';
 
-
-const code = new Branch([
-    {
-        type: 'ifElse',
-        fields: { condition: {
-            type: 'logicalAnd',
-            fields: {
-                a: true,
-                b: true,
-            },
-            children: {},
-        } },
-        children: {
-            if: [
-                {
-                    type: 'print',
-                    fields: { text: 'Hello, world!' },
-                    children: {},
-                }
-            ],
-            else: [
-                {
-                    type: 'print',
-                    fields: { text: 'Hello' },
-                    children: {},
-                },
-                {
-                    type: 'print',
-                    fields: { text: 'World' },
-                    children: {},
-                },
-            ]
-        }
-    },
-    {
-        type: 'finish',
-        fields: {},
-        children: {},
-    }
-]);
-
-console.log(code.compile());
+export { 
+    Branch,
+    Block, 
+    BlockDesign,
+    BlockDesignForm,
+    Definitions,
+    Field,
+};

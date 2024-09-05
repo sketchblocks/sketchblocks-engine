@@ -1,3 +1,4 @@
+import { id } from "../util/general";
 import type { BlockDesign } from "./BlockDesign";
 import type { Branch } from "./Branch";
 import type { Field, FieldSerializedData } from "./Field";
@@ -6,6 +7,8 @@ export abstract class Block {
 
     abstract type: string;
     abstract design: BlockDesign;
+
+    id: string = id();
     
     readonly children: { [key: string]: Branch } = {};
     readonly fields: { [key: string]: Field } = {};

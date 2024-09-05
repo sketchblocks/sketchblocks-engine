@@ -10,6 +10,7 @@ class FinishBlock extends Block {
         form: BlockDesignForm.STACK,
         returnType: 'end',
         title: 'finish',
+        color: 0xaa66ff,
     });
 
     onInit () {}

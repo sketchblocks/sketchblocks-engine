@@ -16,6 +16,7 @@ export class LogicalAndBlock extends Block {
     design = new BlockDesign({
         form: BlockDesignForm.REPORTER,
         returnType: 'boolean',
+        color: 0x59c059,
         components: [
             {
                 type: 'field',
