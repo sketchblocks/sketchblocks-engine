@@ -8,7 +8,9 @@ import './base/blocks/IfElseBlock';
 import './base/blocks/PrintBlock';
 import './base/blocks/AskBlock';
 import './base/blocks/LogicalAndBlock';
+import './base/blocks/ArithmeticAddBlock';
 import './base/blocks/FinishBlock';
+import './base/blocks/DocumentTitleBlock';
 
 export { 
     Branch,

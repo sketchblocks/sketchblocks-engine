@@ -16,7 +16,7 @@ export class PrintBlock extends Block {
         form: BlockDesignForm.STACK,
         returnType: 'void',
         title: 'print',
-        color: 0x5cb1d6,
+        color: 0xaa66ff,
         components: [
             {
                 type: 'field',
