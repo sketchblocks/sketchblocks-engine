@@ -1,26 +1,25 @@
 import { Block } from "../../api/classes/Block";
 import { Field } from "../../api/classes/Field";
+import { FieldDesign } from "../../api/classes/FieldDesign";
 
 export class NumberField extends Field {
 
-    value: number|Block = 0;
+    value: number = 0;
+
+    design = new FieldDesign({
+        acceptType: 'number',
+    });
 
     onInit (value: number = 0) {
         return value;
     }
 
-    onSerialize () {
-        if (this.value instanceof Block) 
-            return this.value.serialize();
-
-        return +this.value;
+    onSerialize (value: number) {
+        return +value;
     }
 
-    onCompile () {
-        if (this.value instanceof Block) 
-            return this.value.compile();
-
-        return this.value.toString();
+    onCompile (value: number) {
+        return value.toString();
     }
 
 }

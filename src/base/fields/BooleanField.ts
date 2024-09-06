@@ -1,26 +1,25 @@
 import { Block } from "../../api/classes/Block";
 import { Field } from "../../api/classes/Field";
+import { FieldDesign } from "../../api/classes/FieldDesign";
 
 export class BooleanField extends Field {
 
-    value: boolean|Block = false;
+    value: boolean = false;
+
+    design = new FieldDesign({
+        acceptType: 'boolean',
+    });
 
     onInit (value: boolean = false) {
         return value;
     }
 
-    onSerialize () {
-        if (this.value instanceof Block) 
-            return this.value.serialize();
-
-        return this.value;
+    onSerialize (value: boolean) {
+        return value;
     }
 
-    onCompile () {
-        if (this.value instanceof Block) 
-            return this.value.compile();
-
-        return this.value
+    onCompile (value: boolean) {
+        return value
             ? 'true'
             : 'false';
     }

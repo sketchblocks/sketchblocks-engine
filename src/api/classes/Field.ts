@@ -1,15 +1,18 @@
 import { id } from "../util/general";
 import { Block, BlockSerializedData } from "./Block";
 import { Definitions } from "./Definitions";
+import { FieldDesign } from "./FieldDesign";
 
 export abstract class Field {
 
-    value:
+    abstract value:
         | number
         | string
-        | boolean
-        | Block = 0;
+        | boolean;
 
+    abstract design: FieldDesign;
+
+    block: Block|null = null;
     id: string = id();
 
     abstract onInit (value?: FieldSerializedData): Exclude<typeof this.value, Block>;
@@ -20,7 +23,7 @@ export abstract class Field {
         if (typeof value === 'object') {
             const TargetBlock = Definitions.findBlock(value.type);
             if (!TargetBlock) throw new Error(`Block type "${value.type}" not found in definitons`);
-            this.value = new TargetBlock().init(value);
+            this.block = new TargetBlock().init(value);
         } else {
             this.value = this.onInit(value);
         }
@@ -28,15 +31,15 @@ export abstract class Field {
     }
 
     public serialize (): FieldSerializedData {
-        if (this.value instanceof Block) 
-            return this.value.serialize();
+        if (this.block) 
+            return this.block.serialize();
         
         return this.onSerialize(this.value);
     }
 
     public compile (): string {
-        if (this.value instanceof Block) 
-            return this.value.compile();
+        if (this.block) 
+            return this.block.compile();
 
         return this.onCompile(this.value);
     }
